@@ -57,15 +57,13 @@ class MagasinTest {
     }
 
     @Test
-    void comte_and_pass_VIP_increase_quality()
+    void pass_VIP_increase_quality_by_2_when_under_10()
     {
-        Item comte = new Item("Comté", 2, 9);
-        Item pass = new Item("Pass VIP Concert", 1, 15);
-        Item[] items = new Item[] { comte, pass };
+        Item pass = new Item("Pass VIP Concert", 9, 15);
+        Item[] items = new Item[] { pass };
         Magasin magasin = new Magasin(items);
         magasin.updateQuality();
-        assertEquals(10, comte.quality);
-        assertEquals(16, pass.quality);
+        assertEquals(17, pass.quality);
     }
 
 
@@ -89,7 +87,6 @@ class MagasinTest {
         assertEquals(0, pass.quality);
     }
 
-    @Disabled
     @Test
     void magic_powers_quality_should_decrease_two_times_faster()
     {
