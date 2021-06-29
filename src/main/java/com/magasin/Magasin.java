@@ -8,44 +8,44 @@ class Magasin {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Kryptonite")) {
+        for (Item item : items) {
+            if (!item.name.equals("Kryptonite")) {
                 // Date de péremption
-                items[i].sellIn = items[i].sellIn - 1;
+                item.sellIn = item.sellIn - 1;
 
                 // Qualité
-                if (items[i].quality > 0) {
+                if (item.quality > 0) {
                     // Qualité diminue
-                    if (!items[i].name.equals("Comté")
-                            && !items[i].name.equals("Pass VIP Concert")) {
-                        items[i].quality = items[i].quality - (items[i].name.equals("Pouvoirs magiques") ? 2 : 1);
+                    if (!item.name.equals("Comté")
+                        && !item.name.equals("Pass VIP Concert")) {
+                        item.quality = item.quality - (item.name.equals("Pouvoirs magiques") ? 2 : 1);
                         // Qualité augmente
                     } else {
                         // Qualité limitée à 50 max
-                        if (items[i].quality < 50) {
-                            items[i].quality = items[i].quality + 1;
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
                             // Qualité augmente en fonction de la date de péremption
-                            if (items[i].name.equals("Pass VIP Concert")) {
-                                if (items[i].sellIn < 11) {
-                                    items[i].quality = items[i].quality + 1;
+                            if (item.name.equals("Pass VIP Concert")) {
+                                if (item.sellIn < 11) {
+                                    item.quality = item.quality + 1;
                                 }// Qualité augmente de 3 pour les Pass VIP si selIn < ou = à 5
-                                if (items[i].sellIn < 6) {
-                                    items[i].quality = items[i].quality + 1;
+                                if (item.sellIn < 6) {
+                                    item.quality = item.quality + 1;
                                 }
                             }
                         }
                     }
                     // Date de péremption dépassée
-                    if (items[i].sellIn < 0) {
-                        if (!items[i].name.equals("Comté")) {
-                            if (!items[i].name.equals("Pass VIP Concert")) {
-                                items[i].quality = items[i].quality - (items[i].name.equals("Pouvoirs magiques") ? 2 : 1);
+                    if (item.sellIn < 0) {
+                        if (!item.name.equals("Comté")) {
+                            if (!item.name.equals("Pass VIP Concert")) {
+                                item.quality = item.quality - (item.name.equals("Pouvoirs magiques") ? 2 : 1);
                             } else {
-                                items[i].quality = 0;
+                                item.quality = 0;
                             }
                         } else { //quality ne dépasse pas 50
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                            if (item.quality < 50) {
+                                item.quality = item.quality + 1;
                             }
                         }
                     }
