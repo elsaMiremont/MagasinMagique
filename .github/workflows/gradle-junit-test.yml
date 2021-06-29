@@ -1,6 +1,6 @@
 name: Gradle Junit Test
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -16,3 +16,8 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
       - name: Test with Gradle
         run: ./gradlew test
+      - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: build/test-results/**/*.xml
